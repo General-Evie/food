@@ -9,11 +9,11 @@ interface DigitalProps {
 }
 
 const ClockDigital: React.FC<DigitalProps> = ({ Close, setSelectedTime, analogDigital }) => {
-    const currentHour = (new Date().getHours() % 12 + 1);
+    const currentHour = (new Date().getHours() % 12 || 12);
     const currentMinute = (new Date().getMinutes() % 60 + 1);
     const [selectedHour, setSelectedHour] = useState<number>(currentHour - 1);
     const [selectedMinute, setSelectedMinute] = useState<number>(currentMinute - 1);
-    const [isPM, setIsPM] = useState<boolean>(false);
+    const [isPM, setIsPM] = useState<boolean>(new Date().getHours() >= 12);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
 
@@ -80,7 +80,7 @@ const ClockDigital: React.FC<DigitalProps> = ({ Close, setSelectedTime, analogDi
                                 type="number"
                                 min={1}
                                 max={12}
-                                placeholder={(currentHour - 1).toString()}
+                                placeholder={(selectedHour + 1).toString()}
                                 onChange={handleHourChange}
                             />
                             <div>:</div>
@@ -88,7 +88,7 @@ const ClockDigital: React.FC<DigitalProps> = ({ Close, setSelectedTime, analogDi
                                 type="number"
                                 min={0}
                                 max={59}
-                                placeholder={formatTime(currentMinute - 1).toString()}
+                                placeholder={formatTime(selectedMinute).toString()}
                                 onChange={handleMinuteChange}
                             />
                         </div>
