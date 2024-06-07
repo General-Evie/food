@@ -39,12 +39,11 @@ const Calendar: React.FC<CalendarProps> = ({
 
     const [year, setYear] = useState(initialDate.getFullYear());
     const [month, setMonth] = useState(initialDate.getMonth());
-    const [virtualYear, setVirtualYear] = useState(year);
-    const [virtualMonth, setVirtualMonth] = useState(month);
     const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate);
     const [headerText, setHeaderText] = useState('');
 
     useEffect(() => {
+        console.log(headerText)
         const dayOfWeek = selectedDate ? dayAbb[selectedDate.getDay()] : '';
         const selectedDay = selectedDate ? selectedDate.getDate() : '';
         setHeaderText(`${dayOfWeek}, ${monthAbbNames[month]} ${selectedDay}, ${year}`);

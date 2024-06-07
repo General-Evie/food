@@ -15,11 +15,8 @@ const TimeMenu: React.FC<TimeProps> = ({ open, Close, setSelectedTime }) => {
     setAnalogDigital(true);
   };
 
-  const switchToDigital = () => {
-    setAnalogDigital(false);
-  };
-
   useEffect(() => {
+    console.log(analogDigital)
     const handleResize = () => {
       setAnalogDigital(window.innerWidth < 431);
     };

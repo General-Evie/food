@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { monthNames, monthAbbNames, dayAbb } from './Context';
 
 interface Calendar2Props {
@@ -41,11 +41,6 @@ const Calendar2: React.FC<Calendar2Props> = ({
     const [month, setMonth] = useState(initialDate.getMonth());
     const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate);
 
-    useEffect(() => {
-        const dayOfWeek = selectedDate ? dayAbb[selectedDate.getDay()] : '';
-        const selectedDay = selectedDate ? selectedDate.getDate() : '';
-        // setHeaderText(`${dayOfWeek}, ${monthAbbNames[month]} ${selectedDay}, ${year}`);
-    }, [year, month, selectedDate, dayAbb, monthAbbNames]);
 
     if (!openCalendar2) return null;
 
@@ -66,11 +61,8 @@ const Calendar2: React.FC<Calendar2Props> = ({
             newMonth = month - 1;
         }
     
-        const newSelectedDate = selectedDate ? new Date(newYear, newMonth, Math.min(selectedDate.getDate(), getDaysInMonth(newYear, newMonth))) : null;
-    
         setYear(newYear);
         setMonth(newMonth);
-        setSelectedDate(newSelectedDate);
     };
     
     const handleNextMonthClick = () => {
@@ -84,11 +76,8 @@ const Calendar2: React.FC<Calendar2Props> = ({
             newMonth = month + 1;
         }
     
-        const newSelectedDate = selectedDate ? new Date(newYear, newMonth, Math.min(selectedDate.getDate(), getDaysInMonth(newYear, newMonth))) : null;
-    
         setYear(newYear);
         setMonth(newMonth);
-        setSelectedDate(newSelectedDate);
     };
 
 const lastMonthDays = getLastMonthDays(year, month);
