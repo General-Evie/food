@@ -47,7 +47,7 @@ const Calendar: React.FC<CalendarProps> = ({
         const dayOfWeek = selectedDate ? dayAbb[selectedDate.getDay()] : '';
         const selectedDay = selectedDate ? selectedDate.getDate() : '';
         setHeaderText(`${dayOfWeek}, ${monthAbbNames[month]} ${selectedDay}, ${year}`);
-    }, [year, month, selectedDate]);
+    }, [year, month, selectedDate, headerText]);
 
     useEffect(() => {
         console.log('effect')

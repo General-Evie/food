@@ -90,7 +90,6 @@ const MyContext = createContext<MyContextProps | undefined>(undefined);
 
 export const ContextProvider: React.FC<MyContextProps> = ({ monthNames, monthAbbNames, foodComponents, children }) => {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
-  const localStorageKey = 'myContext.entries';
 
   monthNames = monthNames || [
     "January", "February", "March", "April", "May", "June",

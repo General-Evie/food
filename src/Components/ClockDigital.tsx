@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useMyContext } from './Context'
-import { ClockIcon } from './SVGs/ClockSVG';
 
 interface DigitalProps {
     Close: () => void;
